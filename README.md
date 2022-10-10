@@ -10,7 +10,7 @@ Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket
 
 ## Capturas:
 ### Página de Login:
-<img src="mockups/login.png" alt="Login Page">  
+<img src="mockups/login.png" width="300" alt="Login Page">  
 <br>
 
 ### Página de Registro:
