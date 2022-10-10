@@ -1,24 +1,17 @@
 # Chat - MERN
 
 Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket.io. El usuario puede registrarse y loguearse para entrar a una sala de chat y chatear en tiempo real. También puede crear múltiples salas y borrarlas.  
-<br>  
-* * *  
-<br>  
 
 ## Índice
 1. [Capturas](#capturas)
 2. [Instrucciones](#instrucciones)
 3. [Endpoints](#endpoints)
 4. [Documentación](#documentación)  
-<br>  
-* * *  
-<br>
 
 ## Capturas:
 ### Página de Login:
 <img src="mockups/login.png" alt="Login Page">  
 <br>
-<br>  
 
 ### Página de Registro:
 <img src="mockups/signin.png" alt="Sign In Page">    
