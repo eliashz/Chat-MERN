@@ -16,7 +16,6 @@ Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket
 ### Página de Registro:
 <img src="mockups/signin.png" alt="Sign In Page">    
 <br>  
-<br>  
 
 ### Página para Crear Sala:
 <img src="mockups/createroom.png" alt="Create Room Page">    
@@ -25,7 +24,6 @@ Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket
 
 ### Página del Chat:
 <img src="mockups/chat.png" alt="Chat Page">   
-<br>  
 <br>  
 
 ## Instrucciones:
