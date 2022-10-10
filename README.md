@@ -14,16 +14,16 @@ Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket
 <br>
 
 ### Página de Registro:
-<img src="mockups/signin.png" alt="Sign In Page">    
+<img src="mockups/signin.png" width="300" alt="Sign In Page">    
 <br>  
 
 ### Página para Crear Sala:
-<img src="mockups/createroom.png" alt="Create Room Page">    
+<img src="mockups/createroom.png" width="300" alt="Create Room Page">    
 <br>
 <br>  
 
 ### Página del Chat:
-<img src="mockups/chat.png" alt="Chat Page">   
+<img src="mockups/chat.png" width="500" alt="Chat Page">   
 <br>  
 
 ## Instrucciones:
