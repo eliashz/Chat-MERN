@@ -30,7 +30,7 @@ Aplicación de **Chat** realizada con Node.js, React, Mongo DB, Express y Socket
 1. Para ejecutar la aplicación es necesario tener instalado [React](https://es.reactjs.org/) y [Node.js](https://nodejs.org/es/).
 2. Renombrar el archivo *congif.env* a *.env* y editar el valor **DATABASE_URL**.
 3. Después de clonar el [repositorio de GitHub](https://github.com/eliashz/Chat-MERN), realizar `npm i` desde */client* y desde */server* para la instalación de las dependencias.
-4. Ejecutar `npm start` desde */client* y desde */server* para la ejecución de la aplicación.  
+4. Teclear `npm start` desde */client* y desde */server* para la ejecución de la aplicación.  
 <br>
 
 ## Endpoints:
