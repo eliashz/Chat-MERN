@@ -8,13 +8,11 @@ const Dashboard = ({ socket }) => {
   const [chatrooms, setChatrooms] = useState([]);
   const [newChatroom, setNewChatroom] = useState([]);
   const [text, setText] = useState('');
-  const [alert, setAlert] = useState(true);
   const [isData, setIsData] = useState(true);
   const inputRef = useRef();
 
   // Get all the chats rooms
   useEffect(() => {
-    if (alert) {
       const getChatrooms = async () => {
         const res = await fetch(url, {
           headers: {
@@ -25,10 +23,8 @@ const Dashboard = ({ socket }) => {
         if (data.message === 'Forbidden.') setIsData(false);
         setChatrooms(data);
       };
-      getChatrooms();
-      setAlert(false);
-    }
-  }, [chatrooms, alert]);
+      getChatrooms();  
+  }, [chatrooms]);
 
   // Add new chat room
   const handleChange = e => setNewChatroom(e.target.value);
@@ -50,7 +46,6 @@ const Dashboard = ({ socket }) => {
 
       if (data.status) {
         setNewChatroom('');
-        setAlert(true);
       } else {
         setText(data.message);
       }
