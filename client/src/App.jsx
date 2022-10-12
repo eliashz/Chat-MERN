@@ -60,7 +60,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={ <Index /> } exact/>
             <Route path="/login" element={ <Login setupSocket={ setupSocket } /> }/>
-            <Route path="/register" element={ <Register />} />
+            <Route path="/register" element={ <Register setupSocket={ setupSocket } />} />
             <Route path="/dashboard" element={ <Dashboard socket={ socket } /> } />
             <Route path="/chat/:chatId" element={ <Chat socket={ socket } /> }/>
             <Route path="*" element={ <NotFound /> }/>

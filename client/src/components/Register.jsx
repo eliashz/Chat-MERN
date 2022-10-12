@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from "react-router-dom";
 
-const Register = () => {
+const Register = (props) => {
   const navigate = useNavigate();
   const [text, setText] = useState(' ');
   const [values, setValues] = useState({name: '', email: '', password: ''});
@@ -21,7 +21,7 @@ const Register = () => {
     e.preventDefault();
     if (!validateForm()) return;
     const { name, email, password } = values;
-    const url = 'http://localhost:8000/user/register';
+    const urlReg = 'http://localhost:8000/user/register';
     const options = {
       method: 'POST',
       headers: {
@@ -29,11 +29,29 @@ const Register = () => {
       },
       body: JSON.stringify({ name, email, password })
     }
-    const res = await fetch(url, options);
+    const res = await fetch(urlReg, options);
     const data = await res.json();
 
-    if (data.status) navigate('/login');
-    setText(data.message);
+    // Login after register
+    if (data.status) {
+        const urlLog = 'http://localhost:8000/user/login';
+        const options = {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password })
+        };
+        const res = await fetch(urlLog, options);
+        const data = await res.json();
+    
+        if (data.status) {
+          localStorage.setItem('token', data.token);
+          props.setupSocket();
+          navigate('/dashboard');
+        }
+      }
+     setText(data.message);
   }
 
   return (
