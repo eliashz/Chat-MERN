@@ -16,7 +16,7 @@ const Login = ( props ) => {
     } 
     return true;    
   }
-  // TODO: no pasar por Login despues de Register
+ 
   const handleSubmit = async e => {
     e.preventDefault();
     if (!validateForm()) return;

@@ -62,7 +62,7 @@ const Chat = ({ socket }) => {
   }, [chatId, socket])
 
   const logout = () => {
-    localStorage.clear();    
+    localStorage.clear();
     navigate('/login');
   }
 

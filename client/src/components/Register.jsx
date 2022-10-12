@@ -32,7 +32,7 @@ const Register = () => {
     const res = await fetch(url, options);
     const data = await res.json();
 
-    if (data.status) navigate('/login'); // TODO: necesario??
+    if (data.status) navigate('/login');
     setText(data.message);
   }
 
