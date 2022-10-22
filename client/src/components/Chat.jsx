@@ -66,14 +66,10 @@ const Chat = ({ socket }) => {
     navigate('/login');
   }
 
-  const goBack = () => {
-    navigate('/dashboard');
-  }
-
   return (
     <div className='chat'>
       <div className='header'>
-        <span onClick={ goBack } className="material-symbols-outlined logout">arrow_back_ios</span>
+        <span onClick={ () => navigate('/dashboard') } className="material-symbols-outlined logout">arrow_back_ios</span>
         <span onClick={ toggleTheme } className="darkLight material-symbols-outlined"> { theme === 'dark' ? 'light_mode' : 'dark_mode' } </span> 
         <span onClick={ logout } className="logout material-symbols-outlined">logout</span>
       </div>
