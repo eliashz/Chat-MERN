@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 const Messages = ({ message }) => {
   const [userId, setUserId] = useState('');
-
+  console.log(message);
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -12,8 +12,8 @@ const Messages = ({ message }) => {
     }
   }, []);
   return (
-    <div className={ userId === message.userId ? 'ownMessage' : 'otherMessage' }>
-      <span className='userName'>{ userId !== message.userId ? message.name + ': ' : null }</span><span className='message'>{message.message}</span>
+    <div className={ userId === message._id ? 'ownMessage' : 'otherMessage' }>
+      <span className='userName'>{ userId !== message._id ? message.name + ': ' : null }</span><span className='message'>{message.text}</span>
     </div> 
   )
 } 

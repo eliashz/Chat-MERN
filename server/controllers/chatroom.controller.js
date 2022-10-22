@@ -43,6 +43,4 @@ exports.deleteChatroom = async (req, res) => {
     if (!chatDelete) 
         return res.status(400).json({ status: false, message: `No chat with this ID.`});  
     res.status(200).json({ status: true, message: 'Chat deleted.'});
-
-    
 };

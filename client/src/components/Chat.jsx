@@ -55,6 +55,7 @@ const Chat = ({ socket }) => {
         },
       });
       const data = await res.json();
+      setMessages(data.chat.messages);
       if (data.message !== 'Forbidden.') setChatName(data.chat.name)
       }
       getChatName();

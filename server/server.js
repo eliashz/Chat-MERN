@@ -66,9 +66,9 @@ io.on('connection', socket => {
         const user = await User.findOne({ _id: socket.userId })
         const newMessage = await Chat.findByIdAndUpdate(chatId, { '$push':{ messages: { user: socket.userId, text: message } }});
         io.to(chatId).emit('newMessage', { 
-            message,
+            text: message,
             name: user.name,
-            userId: socket.userId
+            _id: socket.userId
         });
     });
 });
