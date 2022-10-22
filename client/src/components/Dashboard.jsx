@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from "react-router-dom";
 import DeleteChat from './DeleteChat';
@@ -8,7 +9,6 @@ const Dashboard = ({ socket }) => {
   const [chatrooms, setChatrooms] = useState([]);
   const [newChatroom, setNewChatroom] = useState([]);
   const [text, setText] = useState('');
-  const [alert, setAlert] = useState(true);
   const inputRef = useRef();
 
   // Add new chat room
@@ -29,19 +29,14 @@ const Dashboard = ({ socket }) => {
       const res = await fetch(url, options);
       const data = await res.json();
 
-      if (data.status) {
-        setNewChatroom('');
-        setAlert(true);
-      } else {
-        setText(data.message);
-      }
+      data.status ? setNewChatroom('') : setText(data.message);
+
     }
     inputRef.current.focus();
   }
 
   // Get all the chats rooms
   useEffect(() => {
-    if (alert) {
       const getChatrooms = async () => {
         const res = await fetch(url, {
           headers: {
@@ -49,23 +44,19 @@ const Dashboard = ({ socket }) => {
           }
         });
         const data = await res.json();
+        setChatrooms(data);
         
         // In case there's no users registered. 
-        if (data.message === 'Forbidden.') return navigate('/register');
-        
-        setChatrooms(data);
-      };
+        if (data.message === 'Forbidden.') return navigate('/register');  
+      }
       getChatrooms();
-      console.log(chatrooms);
-      setAlert(false);
-    }
-  }, [chatrooms, alert]);
+  }, [newChatroom]);
 
   // Delete Chat from Dashboard
   const deleteChat = async e => {
     e.preventDefault();
     setChatrooms(chatrooms.filter(chatroom => chatroom._id !== e.target.id))
-    
+
     //Delete from DB
     const url = 'http://localhost:8000/chat';
     const options = {
