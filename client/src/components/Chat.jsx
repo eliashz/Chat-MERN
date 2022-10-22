@@ -8,7 +8,6 @@ const Chat = ({ socket }) => {
   const { chatId } = useParams();
   const inputRef = useRef();
   const { theme, toggleTheme } = useContext(ThemeContext);
-
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [chatName, setChatName] = useState('');

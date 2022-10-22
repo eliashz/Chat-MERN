@@ -64,11 +64,11 @@ io.on('connection', socket => {
 
     socket.on('chatMessage', async ({ chatId, message }) => {
         const user = await User.findOne({ _id: socket.userId })
-        const newMessage = await Chat.findByIdAndUpdate(chatId, { '$push':{ messages: { user: socket.userId, text: message } }});
+        const newMessage = await Chat.findByIdAndUpdate(chatId, { '$push':{ messages: { user: socket.userId, name: user.name, text: message } }});
         io.to(chatId).emit('newMessage', { 
             text: message,
             name: user.name,
-            _id: socket.userId
+            user: socket.userId
         });
     });
 });
