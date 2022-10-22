@@ -8,23 +8,8 @@ const Dashboard = ({ socket }) => {
   const [chatrooms, setChatrooms] = useState([]);
   const [newChatroom, setNewChatroom] = useState([]);
   const [text, setText] = useState('');
-  const [isData, setIsData] = useState(true);
+  const [alert, setAlert] = useState(true);
   const inputRef = useRef();
-
-  // Get all the chats rooms
-  useEffect(() => {
-      const getChatrooms = async () => {
-        const res = await fetch(url, {
-          headers: {
-            Authorization: localStorage.getItem('token'),
-          }
-        });
-        const data = await res.json();
-        if (data.message === 'Forbidden.') setIsData(false);
-        setChatrooms(data);
-      };
-      getChatrooms();  
-  }, [chatrooms]);
 
   // Add new chat room
   const handleChange = e => setNewChatroom(e.target.value);
@@ -46,12 +31,35 @@ const Dashboard = ({ socket }) => {
 
       if (data.status) {
         setNewChatroom('');
+        setAlert(true);
       } else {
         setText(data.message);
       }
     }
     inputRef.current.focus();
   }
+
+  // Get all the chats rooms
+  useEffect(() => {
+    if (alert) {
+      const getChatrooms = async () => {
+        const res = await fetch(url, {
+          headers: {
+            Authorization: localStorage.getItem('token'),
+          }
+        });
+        const data = await res.json();
+        
+        // In case there's no users registered. 
+        if (data.message === 'Forbidden.') return navigate('/register');
+        
+        setChatrooms(data);
+      };
+      getChatrooms();
+      console.log(chatrooms);
+      setAlert(false);
+    }
+  }, [chatrooms, alert]);
 
   // Delete Chat from Dashboard
   const deleteChat = async e => {
@@ -69,11 +77,6 @@ const Dashboard = ({ socket }) => {
       body: JSON.stringify({ id: e.target.id })
     };
     await fetch(url, options);
-  }
-
-  // In case there's no users registered.
-  if (!isData) {
-    return navigate('/register');
   }
 
   return (
